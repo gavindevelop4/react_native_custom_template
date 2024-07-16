@@ -6,6 +6,8 @@ export type RootStackParamList = {
   // index tabs
   [Path.home]: undefined
   [Path.settings]: undefined
+
+  [Path.dialog]: undefined
 }
 
 declare global {

@@ -1,6 +1,7 @@
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import Path from './path'
 import IndexScreen from '@/screens/index'
+import DialogScreen from '@/screens/example/dialog'
 
 export interface RouteConfig {
   key: Path
@@ -12,6 +13,11 @@ export const baseRoutes: Array<RouteConfig> = [
   {
     key: Path.index,
     component: IndexScreen,
+    options: { headerShown: false },
+  },
+  {
+    key: Path.dialog,
+    component: DialogScreen,
     options: { headerShown: false },
   },
 ]

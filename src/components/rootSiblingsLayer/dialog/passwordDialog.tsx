@@ -110,7 +110,7 @@ export const PasswordDialog = ({
       alignItems: 'center',
     },
     cancelButtonText: {
-      color: theme.colors.PRIMARY,
+      color: theme.colors.CANCEL,
       fontWeight: 'bold',
     },
     safeAreaBottom: {

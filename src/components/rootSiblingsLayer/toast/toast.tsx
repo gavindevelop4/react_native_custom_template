@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { ToastConfig } from '../config'
 import Animated, {
   FadeInDown,
   FadeOutUp,
-  RotateInDownLeft,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,

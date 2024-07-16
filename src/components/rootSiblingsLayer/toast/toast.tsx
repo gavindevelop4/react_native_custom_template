@@ -1,15 +1,38 @@
-import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native'
 import { ToastConfig } from '../config'
 import Animated, {
   FadeInDown,
   FadeOutUp,
   RotateInDownLeft,
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming,
 } from 'react-native-reanimated'
 import styleUtils from '@/utils/styleUtils'
 import { ToastType } from './toastTypes'
 
 const Toast = (config: ToastConfig): React.JSX.Element => {
+  const rotation = useSharedValue(0)
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ rotateZ: `${rotation.value}deg` }],
+    }
+  })
+
+  useEffect(() => {
+    if (config.type === ToastType.LOADING) {
+      rotation.value = withRepeat(
+        withTiming(360, { duration: 3000 }),
+        2000,
+        false,
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Animated.View entering={FadeInDown} exiting={FadeOutUp} aria-expanded>
       <View style={styles.container}>
@@ -35,7 +58,7 @@ const Toast = (config: ToastConfig): React.JSX.Element => {
             style={styles.icon}
           />
         ) : (
-          <Animated.View entering={RotateInDownLeft}>
+          <Animated.View style={animatedStyle}>
             <Image
               source={require('@/assets/icons/toastLoading.png')}
               width={styleUtils.getHeight(48)}

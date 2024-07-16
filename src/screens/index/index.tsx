@@ -1,17 +1,25 @@
-import Header from '@/components/header/header'
 import React from 'react'
-import '@/i18n'
-import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { tabRoutes } from './tabs/tabRoutes'
+import BottomTabBar from '@/components/index/bottomTabBar'
+
+const Tab = createBottomTabNavigator()
 
 const IndexScreen = () => {
-  const { t } = useTranslation()
-
   return (
-    <View>
-      <Header title={t('index.title')} showBackButton={false} />
-      <Text>{t('index.welcome')}</Text>
-    </View>
+    // eslint-disable-next-line react/no-unstable-nested-components
+    <Tab.Navigator tabBar={props => <BottomTabBar {...props} />}>
+      {tabRoutes.map(tab => {
+        return (
+          <Tab.Screen
+            key={tab.key}
+            name={tab.key}
+            component={tab.component}
+            options={tab.options}
+          />
+        )
+      })}
+    </Tab.Navigator>
   )
 }
 

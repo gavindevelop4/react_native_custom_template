@@ -10,6 +10,13 @@
   },
   "index": {
     "title": "Index",
-    "welcome": "welcome"
+    "welcome": "welcome",
+    "qr": "QR",
+    "home": {
+      "title": "Home"
+    },
+    "settings": {
+      "title": "Settings"
+    }
   }
 }

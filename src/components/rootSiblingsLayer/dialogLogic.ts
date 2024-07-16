@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { BackHandler } from 'react-native'
-import { DialogConfig } from '../config'
-import { DialogResult, DialogResultType } from './dialogResult'
+import { DialogConfig } from './config'
+import { DialogResult, DialogResultType } from './dialog/dialogResult'
 import uuidUtils from '@/utils/uuidUtils'
-import { DialogType } from './dialogTypes'
+import { DialogType } from './dialog/dialogTypes'
 
 function useDialog() {
   const [dialogList, setDialogList] = useState<DialogConfig[]>([])

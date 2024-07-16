@@ -4,9 +4,9 @@ import {
   RegisterProps,
 } from '@/hooks/registerComponentHooks'
 import { StyleSheet, View } from 'react-native'
-import useToast from './toast/toastLogic'
+import useToast from './toastLogic'
 import { DialogConfig, ToastConfig } from './config'
-import useDialog from './dialog/dialogLogic'
+import useDialog from './dialogLogic'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styleUtils from '@/utils/styleUtils'
 import Toast from './toast/toast'

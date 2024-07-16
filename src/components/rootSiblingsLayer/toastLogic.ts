@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ToastConfig } from '../config'
+import { ToastConfig } from './config'
 
 function useToast() {
   const [toastList, setToastList] = useState<ToastConfig[]>([])

@@ -2,7 +2,7 @@ import { ToastConfig } from '@/components/rootSiblingsLayer/config'
 import { rootSiblingsService } from '@/services/rootSiblings'
 
 const toastUtils = {
-  insertToast(config: ToastConfig) {
+  toast(config: ToastConfig) {
     rootSiblingsService.insertToast(config)
   },
 }

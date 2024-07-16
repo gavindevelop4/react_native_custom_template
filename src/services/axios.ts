@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import { BASE_API_URL } from '@env'
 import cacheUtils, { StorageKey } from '@/utils/cacheUtils'
 import { API_MODULES } from '@/api/modules'
+import toastUtils from '@/utils/toastUtils'
 
 const service = axios.create({
   baseURL: BASE_API_URL,
@@ -37,7 +38,7 @@ service.interceptors.response.use(
 
     if (response.data?.code === 500) {
       const errorMsg = response.data?.message
-      console.error(errorMsg)
+      toastUtils.toast(errorMsg)
       return Promise.reject(result)
     }
     return Promise.resolve(result)
@@ -63,11 +64,11 @@ service.interceptors.response.use(
           }
         }
 
-        console.error(errorMsg)
+        toastUtils.toast(errorMsg)
         return Promise.reject(error)
 
       default:
-        console.error(errorMsg)
+        toastUtils.toast(errorMsg)
         return Promise.reject(error)
     }
   },

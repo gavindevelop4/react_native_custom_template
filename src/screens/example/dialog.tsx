@@ -29,7 +29,7 @@ const DialogScreen = () => {
         <Button
           title="Loading Toast"
           onPress={() => {
-            toastUtils.insertToast({
+            toastUtils.toast({
               message: 'Loading',
               type: ToastType.LOADING,
             })
@@ -38,7 +38,7 @@ const DialogScreen = () => {
         <Button
           title="Success Toast"
           onPress={() => {
-            toastUtils.insertToast({
+            toastUtils.toast({
               message: 'Success',
               type: ToastType.SUCCESS,
             })
@@ -47,7 +47,7 @@ const DialogScreen = () => {
         <Button
           title="Error Toast"
           onPress={() => {
-            toastUtils.insertToast({
+            toastUtils.toast({
               message: 'Error',
               type: ToastType.ERROR,
             })
@@ -56,7 +56,7 @@ const DialogScreen = () => {
         <Button
           title="Warning Toast"
           onPress={() => {
-            toastUtils.insertToast({
+            toastUtils.toast({
               message: 'Warning',
               type: ToastType.WARNING,
             })

@@ -9,6 +9,7 @@
     "delete": "Delete"
   },
   "index": {
+    "title": "Index",
     "welcome": "welcome"
   }
 }

@@ -9,7 +9,7 @@ const IndexScreen = () => {
 
   return (
     <View>
-      <Header title={'index'} showBackButton={false} />
+      <Header title={t('index.title')} showBackButton={false} />
       <Text>{t('index.welcome')}</Text>
     </View>
   )

@@ -3,13 +3,10 @@ import React from 'react'
 import {
   GestureResponderEvent,
   StatusBar,
-  StyleProp,
   StyleSheet,
   Text,
-  TextStyle,
   TouchableOpacity,
   View,
-  ViewStyle,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BackIcon from '@/assets/icons/back.svg'
@@ -22,17 +19,17 @@ interface Props {
   showActionButton?: boolean
   actionButton?: React.JSX.Element
   actionCallback?: (event: GestureResponderEvent) => void
-  style?: StyleProp<ViewStyle>
-  textStyle?: StyleProp<TextStyle>
+  textColor?: string
+  backgroundColor?: string
 }
 
 const Header = ({
   title,
   showBackButton = true,
   actionButton,
-  style = undefined,
-  textStyle = undefined,
   actionCallback,
+  textColor,
+  backgroundColor,
 }: Props) => {
   const navigation = useNavigation()
 
@@ -42,13 +39,13 @@ const Header = ({
 
   const styles = StyleSheet.create({
     safeArea: {
-      backgroundColor: theme.colors.MAIN_1,
+      backgroundColor: backgroundColor ?? theme.colors.MAIN_1,
     },
     header: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: theme.colors.MAIN_1,
+      backgroundColor: backgroundColor ?? theme.colors.MAIN_1,
     },
     backButtonWrap: {
       width: styleUtils.getWidth(48),
@@ -62,7 +59,7 @@ const Header = ({
       justifyContent: 'center',
     },
     title: {
-      color: theme.colors.HEADER,
+      color: textColor ?? theme.colors.HEADER,
       fontSize: styleUtils.getFontSize(17),
       fontWeight: '500',
       flex: 1,
@@ -94,7 +91,7 @@ const Header = ({
         translucent
         backgroundColor="transparent"
       />
-      <View style={[styles.header, style]}>
+      <View style={[styles.header]}>
         <View style={styles.backButtonWrap}>
           {showBackButton && navigation.canGoBack() && (
             <TouchableOpacity
@@ -104,13 +101,13 @@ const Header = ({
               <BackIcon
                 width={styleUtils.getWidth(16)}
                 height={styleUtils.getHeight(16)}
-                stroke={theme.colors.HEADER}
+                stroke={textColor ?? theme.colors.HEADER}
                 strokeWidth={1.5}
               />
             </TouchableOpacity>
           )}
         </View>
-        <Text style={[styles.title, textStyle]}>{title}</Text>
+        <Text style={[styles.title]}>{title}</Text>
         <TouchableOpacity style={styles.action} onPress={actionCallback}>
           {actionButton}
         </TouchableOpacity>

@@ -2,6 +2,7 @@
 
 **React Native Custom Template** contains multiple features that can be used in a variety of use cases, including:
 
+- Stack & Bottom Tab Navigation (React Navigation)
 - State Management (Redux Toolkit)
 - Cache (Async storage)
 - Http request (Axios)

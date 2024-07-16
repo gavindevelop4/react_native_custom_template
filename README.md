@@ -8,6 +8,7 @@
 - Http request (Axios)
 - Environment Variables
 - Internationalization (i18n)
+- Custom Dialog including Toast, Dialogs and Notifcations
 
 ### Environmental Setup
 

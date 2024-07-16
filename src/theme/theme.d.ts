@@ -34,5 +34,8 @@ declare module '@rneui/themed' {
     // Line
     DIVIDER: string
     BORDER: string
+
+    // Overlay background
+    OVERLAY_BACKGROUND: string
   }
 }

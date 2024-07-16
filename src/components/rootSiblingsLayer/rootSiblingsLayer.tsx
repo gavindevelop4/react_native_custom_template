@@ -3,16 +3,22 @@ import {
   registerComponent,
   RegisterProps,
 } from '@/hooks/registerComponentHooks'
-import { Platform, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import useToast from './toast/toastLogic'
-import { ToastConfig } from './config'
+import { DialogConfig, ToastConfig } from './config'
 import useDialog from './dialog/dialogLogic'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styleUtils from '@/utils/styleUtils'
 import Toast from './toast/toast'
+import { DialogRenderMap } from './dialog/dialogRenderMap'
+import { DialogResult } from './dialog/dialogResult'
 
 export interface RootSiblingsLayerInterface {
   insertToast: (config: ToastConfig) => void
+  insertAlertDialog: (config: DialogConfig) => Promise<DialogResult>
+  insertActionDialog: (config: DialogConfig) => Promise<DialogResult>
+  insertPasswordDialog: (config: DialogConfig) => Promise<DialogResult>
+  hideDialog: (id: string) => void
 }
 
 interface RootSiblingsLayerProps
@@ -21,12 +27,23 @@ interface RootSiblingsLayerProps
 export const RootSiblingsLayer = registerComponent<
   RootSiblingsLayerInterface,
   RootSiblingsLayerProps
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >((props: RootSiblingsLayerProps) => {
-  const { dialogList } = useDialog()
+  const {
+    dialogList,
+    insertAlertDialog,
+    insertActionDialog,
+    insertPasswordDialog,
+    hideDialog,
+  } = useDialog()
   const { toastList, insertToast } = useToast()
 
   const instance: RootSiblingsLayerInterface = useRef({
     insertToast,
+    insertAlertDialog,
+    insertActionDialog,
+    insertPasswordDialog,
+    hideDialog,
   }).current
 
   const styles = StyleSheet.create({
@@ -55,6 +72,10 @@ export const RootSiblingsLayer = registerComponent<
       <View
         pointerEvents="box-none"
         style={[StyleSheet.absoluteFill, styles.wrap]}>
+        {dialogList.map((item, index) => {
+          return DialogRenderMap[item.dialogType!].render(index, item)
+        })}
+
         <SafeAreaView
           pointerEvents="none"
           edges={['bottom']}

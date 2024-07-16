@@ -32,6 +32,9 @@ export const theme: CreateThemeOptions = createTheme({
     // Line
     DIVIDER: '#EFF4FB',
     BORDER: '#C8CEDA',
+
+    // Overlay background
+    OVERLAY_BACKGROUND: 'rgba(0,0,0,0.5)',
   },
   darkColors: {
     // Main Color
@@ -64,6 +67,9 @@ export const theme: CreateThemeOptions = createTheme({
     // Line
     DIVIDER: '#EFF4FB',
     BORDER: '#C8CEDA',
+
+    // Overlay background
+    OVERLAY_BACKGROUND: 'rgba(0,0,0,0.5)',
   },
   components: {},
   mode: 'light',

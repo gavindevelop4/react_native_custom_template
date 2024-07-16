@@ -4,7 +4,10 @@ import {
   RootSiblingsLayer,
   RootSiblingsLayerInterface,
 } from '@/components/rootSiblingsLayer/rootSiblingsLayer'
-import { ToastConfig } from '@/components/rootSiblingsLayer/config'
+import {
+  DialogConfig,
+  ToastConfig,
+} from '@/components/rootSiblingsLayer/config'
 
 export class _rootSiblingsService {
   private rootSiblingsLayer?: RootSiblingsLayerInterface
@@ -23,6 +26,18 @@ export class _rootSiblingsService {
 
   public insertToast(config: ToastConfig) {
     this.rootSiblingsLayer?.insertToast(config)
+  }
+
+  public insertAlertDialog(config: DialogConfig) {
+    return this.rootSiblingsLayer?.insertAlertDialog(config)
+  }
+
+  public insertActionDialog(config: DialogConfig) {
+    return this.rootSiblingsLayer?.insertActionDialog(config)
+  }
+
+  public insertPasswordDialog(config: DialogConfig) {
+    return this.rootSiblingsLayer?.insertPasswordDialog(config)
   }
 }
 

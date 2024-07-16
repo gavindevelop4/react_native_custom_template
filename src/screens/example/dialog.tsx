@@ -5,6 +5,7 @@ import toastUtils from '@/utils/toastUtils'
 import { ToastType } from '@/components/rootSiblingsLayer/toast/toastTypes'
 import { useTheme } from '@rneui/themed'
 import styleUtils from '@/utils/styleUtils'
+import dialogUtils from '@/utils/dialogUtils'
 
 const DialogScreen = () => {
   const { theme } = useTheme()
@@ -59,6 +60,40 @@ const DialogScreen = () => {
               message: 'Warning',
               type: ToastType.WARNING,
             })
+          }}
+        />
+      </View>
+      <View style={styles.section}>
+        <Text style={styles.title}>Dialog</Text>
+        <Button
+          title="Alert Dialog, width: 300"
+          onPress={async () => {
+            const result = await dialogUtils.alertDialog({
+              title: 'Alert',
+              content: 'Testing',
+              width: 300,
+            })
+            console.log(result)
+          }}
+        />
+        <Button
+          title="Action Dialog"
+          onPress={async () => {
+            const result = await dialogUtils.actionDialog({
+              title: 'Action',
+              content: 'Testing',
+            })
+            console.log(result)
+          }}
+        />
+        <Button
+          title="Password Dialog"
+          onPress={async () => {
+            const result = await dialogUtils.passwordDialog({
+              title: 'Password',
+              content: 'Testing',
+            })
+            console.log(result)
           }}
         />
       </View>

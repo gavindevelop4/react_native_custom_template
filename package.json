@@ -20,6 +20,8 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@reduxjs/toolkit": "^2.2.3",
+    "@rneui/base": "^4.0.0-rc.8",
+    "@rneui/themed": "^4.0.0-rc.8",
     "async-validator": "^4.2.5",
     "axios": "^1.6.8",
     "babel-plugin-root-import": "^6.6.0",

@@ -96,7 +96,7 @@ const Header = ({
       />
       <View style={[styles.header, style]}>
         <View style={styles.backButtonWrap}>
-          {showBackButton && (
+          {showBackButton && navigation.canGoBack() && (
             <TouchableOpacity
               activeOpacity={1}
               onPress={handleBack}

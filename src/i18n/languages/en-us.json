@@ -1,0 +1,14 @@
+{
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "proceed": "Proceed",
+    "done": "Done",
+    "submit": "Submit",
+    "save": "Save",
+    "delete": "Delete"
+  },
+  "index": {
+    "welcome": "welcome"
+  }
+}

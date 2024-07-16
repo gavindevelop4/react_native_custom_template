@@ -22,7 +22,7 @@ const DialogScreen = () => {
 
   return (
     <View>
-      <Header title={'dialog'} />
+      <Header title={'Dialog'} />
       <View style={styles.section}>
         <Text style={styles.title}>Toast</Text>
         <Button

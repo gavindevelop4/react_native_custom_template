@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export enum StorageKey {
   EXAMPLE = 'example',
+  ACCESS_TOKEN = 'accessToken',
+  REFRESH_TOKEN = 'refreshToken',
 }
 
 const cacheUtils = {

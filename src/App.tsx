@@ -1,11 +1,15 @@
 import React from 'react'
 
 import Router from './router'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 function App(): React.JSX.Element {
   return (
     <>
-      <Router />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </>
   )
 }

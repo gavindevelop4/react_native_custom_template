@@ -8,6 +8,7 @@ export type RootStackParamList = {
   [Path.settings]: undefined
 
   [Path.dialog]: undefined
+  [Path.cache]: undefined
 }
 
 declare global {

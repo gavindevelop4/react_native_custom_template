@@ -21,6 +21,12 @@ const HomeTab = () => {
             navigation.navigate(Path.dialog)
           }}
         />
+        <Button
+          title="Cache"
+          onPress={() => {
+            navigation.navigate(Path.cache)
+          }}
+        />
       </View>
     </View>
   )

@@ -6,6 +6,7 @@ enum Path {
   settings = '/settings',
 
   dialog = '/example/dialog',
+  cache = '/example/cache',
 }
 
 export default Path

@@ -16,7 +16,7 @@
 - `httpUtils` for handling HTTP requests
 - `dateUtils` for getting most common date filter values
 - `cacheUtils` for caching values in devices' memory
-- `dialogUtils`, `toastUtils` for different types of popup
+- `modalUtils` for different types of modal popups
 
 ### Environmental Setup
 

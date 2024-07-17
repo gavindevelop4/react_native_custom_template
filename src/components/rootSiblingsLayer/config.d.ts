@@ -5,7 +5,7 @@ export interface DialogConfig {
   id?: string
   title?: string
   content?: string
-  dialogType?: DialogType
+  dialogType: DialogType
   onConfirm?: (result?: any) => void
   onCancel?: () => void
   width?: number

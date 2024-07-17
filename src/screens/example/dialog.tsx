@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '@/components/header/header'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import toastUtils from '@/utils/toastUtils'
 import { ToastType } from '@/components/rootSiblingsLayer/toast/toastTypes'
 import { useTheme } from '@rneui/themed'
 import styleUtils from '@/utils/styleUtils'
-import dialogUtils from '@/utils/dialogUtils'
+import modalUtils from '@/utils/modalUtils'
+import { DialogType } from '@/components/rootSiblingsLayer/dialog/dialogTypes'
 
 const DialogScreen = () => {
   const { theme } = useTheme()
@@ -29,7 +29,7 @@ const DialogScreen = () => {
         <Button
           title="Loading Toast"
           onPress={() => {
-            toastUtils.toast({
+            modalUtils.toast({
               message: 'Loading',
               type: ToastType.LOADING,
             })
@@ -38,7 +38,7 @@ const DialogScreen = () => {
         <Button
           title="Success Toast"
           onPress={() => {
-            toastUtils.toast({
+            modalUtils.toast({
               message: 'Success',
               type: ToastType.SUCCESS,
             })
@@ -47,7 +47,7 @@ const DialogScreen = () => {
         <Button
           title="Error Toast"
           onPress={() => {
-            toastUtils.toast({
+            modalUtils.toast({
               message: 'Error',
               type: ToastType.ERROR,
             })
@@ -56,7 +56,7 @@ const DialogScreen = () => {
         <Button
           title="Warning Toast"
           onPress={() => {
-            toastUtils.toast({
+            modalUtils.toast({
               message: 'Warning',
               type: ToastType.WARNING,
             })
@@ -68,10 +68,11 @@ const DialogScreen = () => {
         <Button
           title="Alert Dialog, width: 300"
           onPress={async () => {
-            const result = await dialogUtils.alertDialog({
+            const result = await modalUtils.dialog({
               title: 'Alert',
               content: 'Testing',
               width: 300,
+              dialogType: DialogType.ALERT_DIALOG,
             })
             console.log(result)
           }}
@@ -79,9 +80,10 @@ const DialogScreen = () => {
         <Button
           title="Action Dialog"
           onPress={async () => {
-            const result = await dialogUtils.actionDialog({
+            const result = await modalUtils.dialog({
               title: 'Action',
               content: 'Testing',
+              dialogType: DialogType.ACTION_DIALOG,
             })
             console.log(result)
           }}
@@ -89,9 +91,10 @@ const DialogScreen = () => {
         <Button
           title="Password Dialog"
           onPress={async () => {
-            const result = await dialogUtils.passwordDialog({
+            const result = await modalUtils.dialog({
               title: 'Password',
               content: 'Testing',
+              dialogType: DialogType.PASSWORD_DIALOG,
             })
             console.log(result)
           }}

@@ -28,16 +28,8 @@ export class _rootSiblingsService {
     this.rootSiblingsLayer?.insertToast(config)
   }
 
-  public insertAlertDialog(config: DialogConfig) {
-    return this.rootSiblingsLayer?.insertAlertDialog(config)
-  }
-
-  public insertActionDialog(config: DialogConfig) {
-    return this.rootSiblingsLayer?.insertActionDialog(config)
-  }
-
-  public insertPasswordDialog(config: DialogConfig) {
-    return this.rootSiblingsLayer?.insertPasswordDialog(config)
+  public insertDialog(config: DialogConfig) {
+    return this.rootSiblingsLayer?.insertDialog(config)
   }
 }
 

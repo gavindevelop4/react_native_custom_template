@@ -15,10 +15,9 @@ import { DialogResult } from './dialog/dialogResult'
 
 export interface RootSiblingsLayerInterface {
   insertToast: (config: ToastConfig) => void
-  insertAlertDialog: (config: DialogConfig) => Promise<DialogResult>
-  insertActionDialog: (config: DialogConfig) => Promise<DialogResult>
-  insertPasswordDialog: (config: DialogConfig) => Promise<DialogResult>
+  insertDialog: (config: DialogConfig) => Promise<DialogResult>
   hideDialog: (id: string) => void
+  hideAllDialog: () => void
 }
 
 interface RootSiblingsLayerProps
@@ -29,21 +28,14 @@ export const RootSiblingsLayer = registerComponent<
   RootSiblingsLayerProps
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >((props: RootSiblingsLayerProps) => {
-  const {
-    dialogList,
-    insertAlertDialog,
-    insertActionDialog,
-    insertPasswordDialog,
-    hideDialog,
-  } = useDialog()
+  const { dialogList, insertDialog, hideDialog, hideAllDialog } = useDialog()
   const { toastList, insertToast } = useToast()
 
   const instance: RootSiblingsLayerInterface = useRef({
     insertToast,
-    insertAlertDialog,
-    insertActionDialog,
-    insertPasswordDialog,
+    insertDialog,
     hideDialog,
+    hideAllDialog,
   }).current
 
   const styles = StyleSheet.create({

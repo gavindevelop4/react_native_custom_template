@@ -86,7 +86,13 @@ export const ActionDialog = ({ config }: ActionDialogProps): JSX.Element => {
         exiting={SlideOutDown}
         style={styles.container}>
         {title && <Text style={styles.title}>{title}</Text>}
-        <TouchableOpacity style={styles.confirmButton} onPress={onConfirm}>
+        <TouchableOpacity
+          style={styles.confirmButton}
+          onPress={() => {
+            if (onConfirm) {
+              onConfirm()
+            }
+          }}>
           <Text style={styles.confirmButtonTitle}>{_confirmText}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>

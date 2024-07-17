@@ -3,7 +3,6 @@ import { BackHandler } from 'react-native'
 import { DialogConfig } from './config'
 import { DialogResult, DialogResultType } from './dialog/dialogResult'
 import uuidUtils from '@/utils/uuidUtils'
-import { DialogType } from './dialog/dialogTypes'
 
 function useDialog() {
   const [dialogList, setDialogList] = useState<DialogConfig[]>([])
@@ -30,94 +29,24 @@ function useDialog() {
     return () => backHandler.remove()
   }, [dialogList])
 
-  const insertAlertDialog = useCallback(
+  const insertDialog = useCallback(
     (config: DialogConfig) => {
       return new Promise<DialogResult>(resolve => {
-        config.id = `AlertDialog_${uuidUtils.generate()}`
-        config.dialogType = DialogType.ALERT_DIALOG
+        config.id = `dialog_${uuidUtils.generate()}`
 
         const onConfirm = config.onConfirm
-        config.onConfirm = async () => {
+        config.onConfirm = async (result?: any) => {
           if (onConfirm) {
             onConfirm()
           }
           hideDialog(config.id!)
-          resolve({
+          let res: DialogResult = {
             type: DialogResultType.CONFIRM,
-          })
-        }
-        const onCancel = config.onCancel
-        config.onCancel = async () => {
-          if (onCancel) {
-            onCancel()
           }
-          hideDialog(config.id!)
-          resolve({
-            type: DialogResultType.CANCEL,
-          })
-        }
-
-        setDialogList(list => {
-          return [...list, config]
-        })
-      })
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dialogList],
-  )
-
-  const insertActionDialog = useCallback(
-    (config: DialogConfig) => {
-      return new Promise<DialogResult>(resolve => {
-        config.id = `ActionDialog_${uuidUtils.generate()}`
-        config.dialogType = DialogType.ACTION_DIALOG
-
-        const onConfirm = config.onConfirm
-        config.onConfirm = async () => {
-          if (onConfirm) {
-            onConfirm()
+          if (result) {
+            res.result = result
           }
-          hideDialog(config.id!)
-          resolve({
-            type: DialogResultType.CONFIRM,
-          })
-        }
-        const onCancel = config.onCancel
-        config.onCancel = async () => {
-          if (onCancel) {
-            onCancel()
-          }
-          hideDialog(config.id!)
-          resolve({
-            type: DialogResultType.CANCEL,
-          })
-        }
-
-        setDialogList(list => {
-          return [...list, config]
-        })
-      })
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dialogList],
-  )
-
-  const insertPasswordDialog = useCallback(
-    (config: DialogConfig) => {
-      return new Promise<DialogResult>(resolve => {
-        config.id = `PasswordDialog_${uuidUtils.generate()}`
-        config.dialogType = DialogType.PASSWORD_DIALOG
-
-        const onConfirm = config.onConfirm
-        config.onConfirm = async (result: string) => {
-          if (onConfirm) {
-            onConfirm()
-          }
-          hideDialog(config.id!)
-          resolve({
-            type: DialogResultType.CONFIRM,
-            result,
-          })
+          resolve(res)
         }
         const onCancel = config.onCancel
         config.onCancel = async () => {
@@ -147,12 +76,15 @@ function useDialog() {
     })
   }, [])
 
+  const hideAllDialog = useCallback(() => {
+    setDialogList([])
+  }, [])
+
   return {
     dialogList,
-    insertAlertDialog,
-    insertActionDialog,
-    insertPasswordDialog,
+    insertDialog,
     hideDialog,
+    hideAllDialog,
   }
 }
 

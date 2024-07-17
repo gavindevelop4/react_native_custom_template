@@ -85,7 +85,13 @@ export const AlertDialog = ({ config }: AlertDialogProp): JSX.Element => {
         {title && <Text style={styles.title}>{title}</Text>}
         {content && <Text style={styles.content}>{content}</Text>}
         <View style={styles.buttonWrap}>
-          <TouchableOpacity style={styles.confirmButton} onPress={onConfirm}>
+          <TouchableOpacity
+            style={styles.confirmButton}
+            onPress={() => {
+              if (onConfirm) {
+                onConfirm()
+              }
+            }}>
             <Text style={styles.confirmButtonTitle}>{_confirmText}</Text>
           </TouchableOpacity>
           {!hideCancel && (
